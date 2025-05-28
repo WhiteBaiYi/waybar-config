@@ -1,0 +1,174 @@
+// -*- mode: jsonc -*-
+{
+    // "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+     "height": 52, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    //"spacing": 0, // Gaps between modules (4px)
+    // Choose the order of the module
+    "modules-left": [
+        "custom/arch",
+        "river/tags",
+        "custom/right-arrow"
+    ],
+    "modules-center": [
+        "mpris",
+        "custom/linux",
+        "clock"
+   ],
+    "modules-right": [
+        "custom/left-arrow",
+        "network",
+        "cpu",
+        "custom/memory",
+        "backlight",
+        "pulseaudio",
+        "battery",
+        "tray"
+    ],
+    // Modules configuration
+    "tray": {
+        "icon-size": 24,
+        "spacing": 5
+    },
+    "clock": {
+    //"timezone": "Asia/Shanghai",
+	"interval": 1,
+	"format": "  {:%H:%M:%S}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+                    "mode"          : "year",
+                    "mode-mon-col"  : 3,
+                    "weeks-pos"     : "right",
+                    "on-scroll"     : 1,
+                    "format": {
+                              "months":     "<span color='#ffffff'><b>{}</b></span>",
+                              "days":       "<span color='#81a1c1'><b>{}</b></span>",
+                              "weeks":      "<span color='#81a1c1'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#81a1c1'><b>{}</b></span>",
+                              "today":      "<span color='#bf616a'><b><u>{}</u></b></span>"
+                              }
+                    },
+        "actions":  {
+                    "on-click-right": "mode",
+                    "on-scroll-up": "shift_up",
+                    "on-scroll-down": "shift_down"
+                    }
+    },
+    "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 32,
+    "icon-theme": "Numix-Circle",
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "ignore-list": [
+       "foot"
+    ],
+    "app_ids-mapping": {
+      "firefoxdeveloperedition": "firefox-developer-edition"
+    },
+    "rewrite": {
+        "Firefox Web Browser": "Firefox",
+        "Foot Server": "Terminal"
+    }
+    },
+    "cpu": {
+        "format": "󰻠  {usage}% ",
+        "tooltip": true
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-full": "{icon} {capacity}%",
+        "format-charging": "  {capacity}% ",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["  ", "  ", "  ", "  ", "  "]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+        "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "  ({signalStrength}%)  ",
+        "format-ethernet": "  {ipaddr}/{cidr} ",
+        "tooltip-format": "󰑩  {ifname} via {gwaddr} ",
+        "format-linked": "󱦂  {ifname} (No IP) ",
+        "format-disconnected": "⚠ Disconnected ",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon} {volume}% {format_source}",
+        "format-bluetooth": "{icon}  {volume}% {format_source}",
+        "format-bluetooth-muted": "󰝟 {icon}  {format_source}",
+        "format-muted": "󰝟 {format_source}",
+        "format-source": " {volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": " ",
+            "hands-free": " ",
+            "headset": " ",
+            "phone": " ",
+            "portable": "",
+            "car": "",
+            "default": ["", " ", "  "]
+        },
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ true",
+	    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ false"
+    },
+    "river/tags": {
+        "num-tags": 7,
+            "tag-labels": ["壹", "贰", "叁", "肆","伍","陆","柒"]
+        },
+    "mpris": {
+    "interval":1,
+    "title-len": 21,
+	"format": "{player_icon} {title}",
+	"format-paused": "{status_icon} {title}",
+    "tooltip-format": "{player_icon} {player}\n {dynamic}",
+	"player-icons": {
+		"default": "",
+		"mpv": "  ",
+        "spotify": "  ",
+        "chromium": "  "
+	},
+	"status-icons": {
+		"paused": "  "
+	},
+	"ignored-players": ["firefox"]
+    },
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon} {percent}% ",
+        "format-icons": [" ", " "]
+    },
+    "custom/memory": {
+      "exec": "./scripts/memory.sh",
+      "interval": 5,
+      "return-type": "text",
+      "tooltip": false
+    },
+    "custom/arch": {
+        "format": " ",
+        "tooltip": false
+      },
+    "custom/linux": {
+        "format": "  ",
+        "tooltip": false
+      },
+      "custom/right-arrow": {
+		"format": "",
+		"tooltip": false
+	},
+    "custom/left-arrow": {
+		"format": "",
+		"tooltip": false
+	}
+}

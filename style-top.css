@@ -1,0 +1,90 @@
+@define-color nord0 #2e3440;
+@define-color nord1 #303446;
+@define-color nord2 #3b4252;
+@define-color nord3 #81a1c1;
+@define-color nord4 #a3be8c;
+@define-color nord5 #bf616a;
+@define-color nord6 #1a1c29;
+
+* {
+    background-color: transparent;
+    border-radius: 0px;
+}
+
+#tags button {
+    background-color: @nord1;
+    border: 5px solid @nord1;
+}
+
+#tags button.occupied {
+    background-color: @nord1;
+    border: 5px solid @nord6
+}
+
+#tags button.focused {
+    background-color: @nord1;
+    border: 5px solid @nord2;
+}
+
+#tags button.urgent {
+    background-color: @nord5;
+}
+
+#mpris {
+    background-color: @nord0;
+    font-size: 25px;
+    padding: 0 5px;
+}
+
+#custom-arch,
+#custom-linux {
+    background-color: @nord1;
+    font-size: 30px;
+}
+
+#taskbar {
+    background-color: @nord1;
+}
+
+#custom-left-arrow,
+#custom-right-arrow {
+    font-size: 35px;
+    margin: 5px;
+    color: @nord1;
+}
+
+#clock,
+#battery,
+#network,
+#pulseaudio,
+#cpu,
+#backlight,
+#custom-memory,
+#tray {
+    background-color: @nord1;
+    padding-left: 5px;
+}
+
+#clock {
+    font-size: 25px;
+    padding: 0 10px;
+}
+
+#battery.warning {
+    background-color: @nord5;
+}
+
+#battery.critical {
+    background-color: red;
+}
+
+tooltip {
+    background-color: @nord1;
+    border: 2px solid @nord0;
+    padding: 8px 12px;
+    color: @nord1;
+    font-size: 20px;
+    font-weight: normal;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    margin: 10px;
+}
